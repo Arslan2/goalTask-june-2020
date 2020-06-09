@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row margin-top-3-percent">
+    <div class="col-md-12 text-center">
+      <h4 class="control-label">News Preview</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <button class="btn pull-left" (click)="navigateToNewsSearch()">
+        <span>
+          <i class="fa fa-arrow-left"></i>
+        </span>Back To News Search
+      </button>
+    </div>
+  </div>
+  <div class="row margin-top-3-percent">
+    <div class="col-md-12 text-center">
+      <h1 class="control-label">{{newsTitle}}</h1>
+    </div>
+  </div>
+</div>
+<div class="container" *ngIf="isNewsPresent(news)">
+  <div class="row margin-top-3-percent">
+    <div class="col-md-12">
+      <div *ngFor="let newsData of news">
+        <div [innerHTML]="getModelHtml(newsData)"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container" *ngIf="!isNewsPresent(news)">
+    <div class="row margin-top-3-percent">
+      <div class="col-md-12 text-center">
+        <label class="now-preview">No Found Preview</label>
+      </div>
+    </div>
+</div>

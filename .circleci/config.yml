@@ -1,0 +1,40 @@
+version: 2.1
+jobs:
+  build:
+    # The primary container is an instance of the first image listed. The job's commands run in this container.
+    docker:
+      - image: circleci/node:8.9.3-stretch
+      - image: mysql:5.7.29
+        environment:
+          MYSQL_ROOT_PASSWORD: 'password'
+          MYSQL_DATABASE: 'news_system_test'
+          MYSQL_USER: 'newsAppUser'
+          MYSQL_PASSWORD: 'password'
+
+        command:
+          mysqld --sql-mode=NO_ENGINE_SUBSTITUTION --max_allowed_packet=32M
+    steps:
+      - checkout
+      - run:
+          name: Install mysql client
+          command: 'sudo apt-get update && sudo apt install -y mysql-client'                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://127.0.0.1:3306 -timeout 120s 
+      - run:
+          name: Run npm install
+          command: |
+            cd news-app-api
+            npm install  
+      - run:
+          name: Run Tests
+          command: |
+            cd news-app-api
+            npm run test
+        
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+    

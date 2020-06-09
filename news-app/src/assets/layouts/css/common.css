@@ -1,0 +1,81 @@
+
+i:hover {
+    color: yellow;
+    cursor: pointer;
+}
+a:hover {
+    cursor: pointer;
+}
+a:active {
+    color: FFFFFF;
+}
+select {
+    text-align: center;
+    text-align-last: center;
+    border: none;
+    background: #28b16d;
+    color: #FFFFFF;
+    border-radius: 10px;
+    padding: 1% 0% 1% 0%;
+}
+option:hover{
+    background-color: yellow;
+}
+label {
+    color: #28b16d !important;
+    padding-top: 1%;
+}
+h1,h2,h3,h4,h5,h6 {
+    color: #28b16d !important;
+    text-decoration: underline;
+}
+.margin-left-5-percent {
+    margin-left: 5%;
+}
+.margin-left-16-percent {
+    margin-left: 16%;
+}
+.margin-left-5-percent {
+    margin-left: 5%;
+}
+.margin-left-2-percent {
+    margin-left: 2%;
+}
+.margin-left-22-percent {
+    margin-left: 22%;
+}
+.margin-top-5-percent {
+    margin-top: 5%;
+}
+.margin-top-3-percent {
+    margin-top: 3%;
+}
+.margin-top-4-percent {
+    margin-top: 4%;
+}
+.margin-top-2-percent {
+    margin-top: 2%;
+}
+.padding-left-right-0 {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.btn {
+    background-color: #28b16d;
+    border-color: transparent;
+    color: #FFFFFF;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+    border-right-width: 0px;
+    border-left-width: 0px;
+    border-radius: 10px;
+    padding: 1% 5% 1% 5%;
+}
+.btn:hover{
+    color: yellow;
+}
+.btn:disabled{
+    cursor: not-allowed;
+}

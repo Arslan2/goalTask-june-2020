@@ -1,0 +1,57 @@
+::ng-deep .ui-datatable .ui-datatable-header {
+    background: #28b16d;
+    border: none;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: #FFFFFF;
+    font-weight: bolder;
+}
+::ng-deep .ui-datatable .ui-datatable-thead>tr>th {
+    background: #28b16d;
+    border: solid #FFFFFF 2px;
+    color: #FFFFFF;
+    border-left: none;
+    border-right: none;
+    font-weight: bold;
+}
+::ng-deep .ui-datatable {
+    text-align: center;
+}
+::ng-deep .ui-datatable tbody > tr.ui-widget-content.ui-datatable-odd {
+    background: #28b16d;
+    border: solid #FFFFFF 2px;
+    color: #FFFFFF !important;
+    border-left: none;
+    border-right: none;
+    opacity: 0.7;
+}
+::ng-deep .ui-datatable tbody > tr.ui-widget-content.ui-datatable-even {
+    background: #28b16d;
+    border: solid #FFFFFF 2px;
+    color: #FFFFFF !important;
+    border-left: none;
+    border-right: none;
+    opacity: 0.3;
+}
+::ng-deep .ui-paginator-bottom {
+    background: #28b16d;
+    border: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: #FFFFFF;
+}
+::ng-deep .ui-paginator .ui-paginator-page.ui-state-active {
+    background: #28b16d;
+    color: #FFFFFF;
+    border-color: #FFFFFF;
+}
+::ng-deep .ui-datatable-emptymessage {
+    color: #28b16d;
+}
+.margin-left-10-percent {
+    margin-left: 10%;
+}
+.custom-fa-icon {
+    font-size: 150%;
+    cursor: pointer !important;
+}

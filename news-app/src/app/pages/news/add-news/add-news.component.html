@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row margin-top-3-percent">
+    <div class="col-md-12 text-center">
+      <h5 class="control-label">Add Articles News</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <button class="btn pull-left" (click)="navigateToNewsSearch()">
+        <span>
+          <i class="fa fa-arrow-left"></i>
+        </span>Back To News Search
+      </button>
+    </div>
+  </div>
+  <form [formGroup]="addNewsForm" (ngSubmit)="onSubmit(addNewsForm.value)" class="form-inline" id="add_news_form">
+    <div class="form-body">
+      <div class="row margin-top-2-percent">
+        <div class="col-md-5 form-group">
+          <label class="control-label"> News Name * :</label>
+          <input class="form-control margin-left-5-percent" type="text" formControlName="newsName">
+        </div>
+        <div class="col-md-3"></div>
+        <div class="col-md-4 form-group">
+          <label class="control-label margin-left-22-percent"> Article Type * :</label>
+          <select class="custom-dropdown margin-left-5-percent" formControlName="articleType"
+            [(ngModel)]="articleTypeId">
+            <option value="0" disabled>Select Article Type</option>
+            <option *ngFor="let articleType of articleTypes" value="{{articleType.id}}">{{articleType.title}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="row margin-top-2-percent">
+        <div class="col-md-12 form-group">
+          <label class="control-label pull-left"> Article Body * :</label>
+        </div>
+      </div>
+      <div class="row margin-top-2-percent">
+        <div class="col-md-12">
+          <ck-editor formControlName="article" name="messageBody" [config]="editorConfig" [readonly]="false"
+            (ready)="onReady($event)" debounce="debounce">
+          </ck-editor>
+        </div>
+      </div>
+      <div class="row margin-top-2-percent">
+        <div class="col-md-12 form-actions text-center">
+          <button type="submit" class="btn" id="add_news_button" [disabled]="!(addNewsForm.valid)"> Submit
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,22 @@
+<div class="row margin-top-4-percent">
+  <p-dataTable [value]="news.rows" [lazy]="true" [rows]="defaultLimit" [paginator]="true" [totalRecords]="news.count"
+    (onLazyLoad)="paginateList($event)">
+    <p-header>News</p-header>
+    <p-column field="id" header="ID">
+      <ng-template let-col let-newsObj="rowData" pTemplate="body">
+        <span>{{ newsObj[col.field]}}</span>
+      </ng-template>
+    </p-column>
+    <p-column field="title" header="Title">
+      <ng-template let-col let-newsObj="rowData" pTemplate="body">
+        <span>{{ newsObj[col.field]}}</span>
+      </ng-template>
+    </p-column>
+    <p-column field="id" header="Action">
+      <ng-template let-col let-newsObj="rowData" pTemplate="body">
+        <span><i class="fa fa-eye custom-fa-icon" (click)="previewNews(newsObj[col.field],newsObj['title'])"></i></span>
+        <span class="margin-left-10-percent"><i class="fa fa-trash custom-fa-icon" (click)="deleteNews(newsObj[col.field])"></i></span>
+      </ng-template>
+    </p-column>
+  </p-dataTable>
+</div>

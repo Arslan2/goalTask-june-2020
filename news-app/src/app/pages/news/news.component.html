@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row margin-top-3-percent">
+    <div class="col-md-12 text-center">
+      <h1 class="text-center">News</h1>
+    </div>
+  </div>
+  <div class="row margin-top-2-percent">
+    <div class="col-md-3">
+      <label class="pull-left">Add News: </label>
+      <button class="btn pull-left margin-left-5-percent" (click)="addNews()"> Add </button>
+    </div>
+    <div class="col-md-4">
+
+    </div>
+    <div class="col-md-5">
+      <label class="pull-left margin-left-16-percent">Search News By Type: </label>
+      <select class="pull-right" [(ngModel)]="articleTypeId" (change)="onArticleTypeChange(articleTypeId)">
+        <option value="0" selected>Any</option>
+        <option *ngFor="let articleType of articleTypes" value="{{articleType.id}}">{{articleType.title}}</option>
+      </select>
+    </div>
+  </div>
+  <app-news-listing [news]="news" (paginationEvent)="getNews($event)" (deleteNewsEvent)="deleteNews($event)">
+  </app-news-listing>
+</div>

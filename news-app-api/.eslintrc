@@ -1,0 +1,22 @@
+{
+    "root": true,
+    "env": {
+        "es6": true,
+        "mocha": true,
+        "node": true,
+        "shared-node-browser": true,
+        "jasmine": true
+    },
+    "parser": "babel-eslint",
+
+    "extends": [
+        "airbnb-base",
+        "plugin:prettier/recommended"
+        
+    ],
+    "rules": {
+        "prefer-destructuring": ["error", {"object": false, "array": false}],
+        "no-await-in-loop": "off",
+        "no-param-reassign": "warn" 
+    }
+}
