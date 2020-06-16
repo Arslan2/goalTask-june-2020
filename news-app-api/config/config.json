@@ -22,7 +22,10 @@
     "host": "127.0.0.1",
     "dialect": "mysql",
     "operatorsAliases": false,
-    "port": 3306
+    "port": 3306,
+    "pubnubPublishKey":"pub-c-fc80cffe-b3fd-44bf-bd67-5871b294073a",
+    "pubnubSubscribeKey":"sub-c-ac17d2a2-afd0-11ea-a40b-6ab2c237bf6e",
+    "pubnubSecretKey":"sec-c-ZDFlMjczNDctNTA1Ny00NzI0LWJhZTItNjM1MGFlOWE3Y2Fm"
   },
   "test": {
     "username": "newsAppUser",

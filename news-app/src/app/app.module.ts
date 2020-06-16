@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PagesModule } from './pages/pages.module';
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
-
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,8 @@ import { routing } from './app.routing';
     routing,
     PagesModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    FlashMessagesModule.forRoot()
   ],
   providers: [
   ],

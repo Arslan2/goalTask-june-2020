@@ -4,6 +4,28 @@ const router = express.Router();
 const bbPromise = require("bluebird");
 const { ArticleType, NewsArticle, News, sequelize } = require("../models");
 
+function publishMessage(message, type) {
+  process.pubNubInstace.publish(
+    {
+      message,
+      channel: `news-system-${type}`,
+      sendByPost: false, // true to send via post
+      storeInHistory: false, // override default storage options
+      meta: {
+        cool: "meta"
+      } // publish extra meta with the request
+    },
+    function(status, response) {
+      if (status.error) {
+        // handle error
+        console.log(status);
+      } else {
+        console.log("message Published w/ timetoken", response.timetoken);
+      }
+    }
+  );
+}
+
 router.get("/types", async (req, res) => {
   res.json(await ArticleType.findAll());
 });
@@ -45,9 +67,14 @@ router.delete("/:id", async (req, res) => {
     ]);
 
     await transaction.commit();
+    publishMessage(
+      `New ID:${req.params.id} has successfully delted !!`,
+      "success"
+    );
     res.json({ deleted: true });
   } catch (err) {
     await transaction.rollback();
+    publishMessage(`>>>>> Error: ${err}`, "error");
     throw err;
   }
 });
@@ -59,7 +86,9 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
   if (!req.body.title || !req.body.description || !req.body.articleTypeId) {
-    res.status(400).send("Missing Attributes");
+    const errorMessage = "Missing Attributes";
+    res.status(400).send(errorMessage);
+    publishMessage(`>>>>> Error: ${errorMessage}`, "error");
   }
 
   const transaction = await sequelize.transaction();
@@ -81,9 +110,11 @@ router.post("/", async (req, res) => {
     );
 
     await transaction.commit();
+    publishMessage(`${req.body.title} has successfully created !!`, "success");
     res.json({ added: true });
   } catch (err) {
     await transaction.rollback();
+    publishMessage(`>>>>> Error: ${err}`, "error");
     throw err;
   }
 });

@@ -3,7 +3,9 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
+const PubNub = require("pubnub");
 const routes = require("./config/routes");
+const appConfigDevelopment = require("../news-app-api/config/config.json").development;
 
 const app = express();
 
@@ -37,6 +39,14 @@ app.use(function(err, req, res) {
   // render the error page
   res.status(err.status || 500);
   res.render("error");
+});
+
+process.pubNubInstace = new PubNub({
+  subscribeKey: appConfigDevelopment.pubnubSubscribeKey,
+  publishKey: appConfigDevelopment.pubnubPublishKey,
+  secretKey: appConfigDevelopment.pubnubSecretKey,
+  logVerbosity: true,
+  ssl: true
 });
 
 module.exports = app;
