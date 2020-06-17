@@ -5,7 +5,8 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const PubNub = require("pubnub");
 const routes = require("./config/routes");
-const appConfigDevelopment = require("../news-app-api/config/config.json").development;
+const appConfigDevelopment = require("../news-app-api/config/config.json")
+  .development;
 
 const app = express();
 
