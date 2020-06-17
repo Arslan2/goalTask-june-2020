@@ -8,8 +8,6 @@ const routes = require("./config/routes");
 const appConfigDevelopment = require("../news-app-api/config/config.json")
   .development;
 
-console.log("Happy Testing !!");
-
 const app = express();
 
 // view engine setup
